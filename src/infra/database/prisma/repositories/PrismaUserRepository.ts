@@ -15,4 +15,16 @@ export class PrimaUserRepository implements UserRepository {
         })
     }
 
+    async findByEmail(email: string): Promise<User | null> {
+        const user = await this.prisma.user.findUnique({
+          where: {
+            email,
+          },
+        });
+    
+        if (!user) return null;
+    
+        return PrismaUserMapper.toDomain(user);
+      }
+
 }
