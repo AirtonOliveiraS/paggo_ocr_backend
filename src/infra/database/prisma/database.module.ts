@@ -1,16 +1,22 @@
 import { Module } from "@nestjs/common";
 import { PrismaService } from "./prisma.service";
 import { UserRepository } from "src/modules/user/repositories/UserRepository";
-import { PrimaUserRepository } from "./repositories/PrismaUserRepository";
+import { PrismaUserRepository } from "./repositories/PrismaUserRepository";
+import { FileRepository } from "src/modules/files/repositories/FileRepository";
+import { PrismaFileRepository } from "./repositories/PrismaFileRepository";
 
 @Module(
     {
         providers: [PrismaService,
             {
               provide: UserRepository,
-              useClass:PrimaUserRepository,
+              useClass:PrismaUserRepository,
+            },
+            {
+              provide: FileRepository,
+              useClass:PrismaFileRepository,
             }],
-            exports:[UserRepository],
+            exports:[UserRepository,FileRepository],
     }
 )
 export class DataBaseModule { }

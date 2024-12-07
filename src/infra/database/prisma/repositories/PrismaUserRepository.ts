@@ -5,7 +5,7 @@ import { PrismaUserMapper } from "../mappers/PrismaUserMapper";
 import { Injectable } from "@nestjs/common";
 
 @Injectable()
-export class PrimaUserRepository implements UserRepository {
+export class PrismaUserRepository implements UserRepository {
     constructor(private prisma: PrismaService) { }
 
     async create(user: User): Promise<void> {
