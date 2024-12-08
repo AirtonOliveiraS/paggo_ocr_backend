@@ -1,25 +1,14 @@
-import { NotFoundException, UnauthorizedException } from '@nestjs/common';
-import { FileRepository } from '../../repositories/FileRepository';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/infra/database/prisma/prisma.service'; // Importe o PrismaService
 
-interface GetManyFileRequest {
-  
-  userId: string;
-}
-
+@Injectable()
 export class GetManyFileUseCase {
-  constructor(private fileRepository: FileRepository) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-  async execute({  userId }: GetManyFileRequest) {
-    const files = await this.fileRepository.findManyByUserId(
-      userId,
-    
-    );
-
-   
-
-    if (!files) throw new NotFoundException();
-
-
+  async execute(userId: string) {
+    const files = await this.prisma.file.findMany({
+      where: { userId },
+    });
     return files;
   }
 }

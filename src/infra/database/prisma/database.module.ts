@@ -12,10 +12,12 @@ import { PrismaFileRepository } from "./repositories/PrismaFileRepository";
               provide: UserRepository,
               useClass:PrismaUserRepository,
             },
+           
             {
               provide: FileRepository,
               useClass:PrismaFileRepository,
-            }],
+            }
+          ],
             exports:[UserRepository,FileRepository],
     }
 )

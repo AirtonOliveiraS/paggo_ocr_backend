@@ -9,10 +9,13 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
   }
 
   get user() {
-    return this.user;
+    return this['user']; // Acessa o modelo `user` diretamente sem recursão
   }
 
   get file() {
-    return this.file;
+    return this['file']; // Acessa o modelo `file` diretamente sem recursão
+  }
+  get interaction() {
+    return this['interaction']; // Acessa o modelo `file` diretamente sem recursão
   }
 }
