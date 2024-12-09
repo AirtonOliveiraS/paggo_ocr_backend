@@ -19,6 +19,7 @@ Duplique o arquivo .env.local e renomeio com .env e insira as variaveis de ambie
 DATABASE_URL: estou usando o sqlite entao por padrão : "file:./dev.db"
 JWT_SECRET hambiente de desenvolvimento ex: 'desenvolvimento'
 JWT_EXPIRE: tempo de expiraçã do token de acesso ex:  '5 days'
+PORT
 ```
 
 
@@ -29,9 +30,10 @@ JWT_EXPIRE: tempo de expiraçã do token de acesso ex:  '5 days'
 ```bash
 npm install
 #&
-npm build 
+npm run build 
 #&
 npm run start:dev
+
 
 ```
 ### Banco
