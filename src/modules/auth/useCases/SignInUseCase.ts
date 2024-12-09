@@ -20,7 +20,11 @@ export class SignInUseCase {
     };
 
     const jwtToken = this.jwtService.sign(payload);
+    
 
-    return jwtToken;
+    return {
+      jwtToken,
+      userId: user.id, // Devolvendo o ID do usuário também
+    };
   }
 }

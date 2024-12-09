@@ -28,7 +28,7 @@ model File {
   userId      String   
   user        User     @relation(fields: [userId], references: [id]) 
 
-  interactions Interaction[]
+  
 }
 
 model Interaction {
@@ -36,8 +36,6 @@ model Interaction {
   question    String   
   answer      String?  
   createdAt   DateTime @default(now())
-  fileId      String   
-  userId      String   
-  file        File     @relation(fields: [fileId], references: [id])
+  userId      String     
   user        User     @relation(fields: [userId], references: [id])
 }

@@ -4,6 +4,8 @@ import { UserRepository } from "src/modules/user/repositories/UserRepository";
 import { PrismaUserRepository } from "./repositories/PrismaUserRepository";
 import { FileRepository } from "src/modules/files/repositories/FileRepository";
 import { PrismaFileRepository } from "./repositories/PrismaFileRepository";
+import { InteractionRepository } from "src/modules/interactions/repositories/InteractionRepository";
+import { PrismaInteractionRepository } from "./repositories/PrismaInteractionRepository";
 
 @Module(
     {
@@ -16,9 +18,13 @@ import { PrismaFileRepository } from "./repositories/PrismaFileRepository";
             {
               provide: FileRepository,
               useClass:PrismaFileRepository,
+            },
+            {
+              provide: InteractionRepository,
+              useClass:PrismaInteractionRepository,
             }
           ],
-            exports:[UserRepository,FileRepository],
+            exports:[UserRepository,FileRepository,InteractionRepository],
     }
 )
 export class DataBaseModule { }

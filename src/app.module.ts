@@ -5,11 +5,12 @@ import { AuthModule } from './infra/http/modules/auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './infra/http/modules/auth/guards/jwtAuth.guard';
 import { FileModule } from './infra/http/modules/file/file.module';
+import { InteractionModule } from './infra/http/modules/interaction/interaction.module';
 
 
 
 @Module({
-  imports: [DataBaseModule,UserModule,AuthModule,FileModule],
+  imports: [DataBaseModule,UserModule,AuthModule,FileModule,InteractionModule],
   controllers: [],
   providers: [
     {

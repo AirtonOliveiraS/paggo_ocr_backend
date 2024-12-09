@@ -17,11 +17,12 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     @UseGuards(AuthGuard('local'))
     async signIn(@Request()request:AuthRequestModel) {
-        const access_token = await this.signInUseCase.execute({
-            user: request.user,
-          });
+      const { jwtToken, userId } = await this.signInUseCase.execute({
+        user: request.user,
+      });
+      const access_token = jwtToken
       
-          return { access_token };
+          return { access_token, userId };
     }
 
     @Get('teste')
